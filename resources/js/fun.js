@@ -23,5 +23,22 @@ function rollingData(div, data, delimiter="\n", delay=25, callback=null) {
         }, delay);
     }
     update(data);
-
 }
+
+function changeColor(color) {
+    if (["white", "green", "amber"].includes(color)) {
+        document.cookie = "color=" + color;
+        setColor(color);
+    }
+}
+
+function setColor(color) {
+    if (["white", "green", "amber"].includes(color)) {
+        document.getElementById("theme").setAttribute("href", "/css/theme-" + color + ".css");
+    }
+    else {
+        document.getElementById("theme").setAttribute("href", "/css/theme-amber.css");
+    }
+}
+
+setColor((document.cookie != null) ? document.cookie.split("=")[1] : "amber");

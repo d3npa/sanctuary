@@ -1,0 +1,11 @@
+html, body {
+    color: #ff8a19;
+}
+
+body > #topbar {
+    background-color: #ff8a19;
+}
+
+body a {
+    color: #ff8a19;
+}

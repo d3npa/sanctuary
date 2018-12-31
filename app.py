@@ -91,8 +91,6 @@ def get_css(filename):
     with open(path, "rb") as f:
         res = Response(f.read())
         res.headers["Content-Type"] = "text/css; charset=UTF-8"
-        res.data = res.data.replace("%color", "ff7e00")
-#        res.data = res.data.replace("%color", "0f0")
         return res
 
 @app.route("/js/<filename>")

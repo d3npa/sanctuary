@@ -16,16 +16,12 @@ html, body {
 /*
     font-family: "vt220", "jackey", monospace;
 */
-    color: #%color;
+    color: white;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
     font-size: 16px;
-}
-
-body a {
-    color: #%color
 }
 
 body > div {
@@ -40,7 +36,7 @@ body > div {
 
 body > #topbar {
     padding: 5px 0px 5px 0px;
-    background-color: #%color;
+    background-color: white;
     text-align: center;
     color: #000;
 }
@@ -72,4 +68,27 @@ a:hover {
 
 rolling[hidden] {
     display: none;
+}
+
+#topbar box {
+    display: inline-block;
+    border-style: solid;
+    border-color: black;
+    cursor: pointer;
+    border-width: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+#topbar box[green] {
+    background: #00ff80;
+}
+
+#topbar box[amber] {
+    /* background: #ff7e00; */
+    background: #ff8a19;
+}
+
+#topbar box[white] {
+    background: #eee;
 }
