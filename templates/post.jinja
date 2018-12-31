@@ -7,7 +7,9 @@
     </head>
     <body>
         <div id="topbar">
-		[ <a href="/">トップページ</a> | <a href="/blog.txt">ブログ</a> | <a href="/raw/{{ title }}">RAW板を見る</a> | Twitter: <a target="_blank" href="//twitter.com/ousanko">@ousanko</a> | PGP: 2067619962517663d3f5b5cde4f7c03daff0b7bc ]
+        <b>
+		      [ <a href="/">トップページ</a> | <a href="/raw/{{ title }}">RAW板を見る</a> | Twitter: <a target="_blank" href="//twitter.com/ousanko">@ousanko</a> | あなたのIP: {{ client_ip }} ]
+        </b>
         </div>
         <div id="title"><br>; Viewing {{title}}<br><br></div>
         <div id="page">{{ content.decode("utf-8") }}</div>

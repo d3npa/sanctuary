@@ -21,8 +21,8 @@ def log_request(res):
         time.strftime("%y/%m/%d %H:%M:%S"),
         remote_addr,
         request.url.encode("utf-8"),
-        res.status, 
-        request.method, 
+        res.status,
+        request.method,
         request.headers["User-Agent"])
     print line
     return res
@@ -71,7 +71,8 @@ def view_file(filename):
     if not os.path.exists(path):
         return Response(status=404)
     with open(path, "rb") as f:
-        res = Response(render_template("post.jinja", title=filename, content=f.read()))
+        remote_addr = request.headers["X-Forwarded-For"] if "X-Forwarded-For" in request.headers else request.remote_addr
+        res = Response(render_template("post.jinja", title=filename, content=f.read(), client_ip=remote_addr))
         res.headers["Content-Type"] = "text/html; charset=UTF-8"
         res.data = render(res.data)
         return res
