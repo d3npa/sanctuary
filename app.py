@@ -48,7 +48,7 @@ def render(data):
     data = data.replace("$SIGNATURE", "d3npä")
     for cmd in re.findall(r'\$\((.*?)\)', data):
         data = data.replace("$(%s)" % cmd, command(cmd))
-    data = data.replace("\\$", "$")
+    data = data.replace("\\$", "$").replace("\\\\", "\\")
     return data
 
 def guess_mime(filename):
@@ -81,7 +81,6 @@ def view_raw_file(filename):
     with open(path, "rb") as f:
         res = Response(f.read())
         res.headers["Content-Type"] = guess_mime(path) + "; charset=UTF-8"
-        # res.data = render(res.data)
         return res
 
 @app.route("/css/<filename>")
