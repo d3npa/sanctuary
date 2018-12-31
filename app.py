@@ -5,10 +5,6 @@ from werkzeug import secure_filename
 import os, time, re
 app = Flask(__name__)
 
-#@app.after_request
-#def set_headers(res):
-#    res.headers["Server"] = "秘密Server/π.0"
-#    return res
 @app.before_request
 def check_domain():
     if not request.host in ["codality.hackers.moe", "xn--d3np-ooa.hackers.moe"]:
@@ -64,7 +60,7 @@ def guess_mime(filename):
 
 @app.route("/<filename>")
 def view_file(filename):
-    if filename.split(".")[-1] in ["pdf", "mp4"]:
+    if filename.split(".")[-1] in ["pdf", "mp3", "mp4"]:
         return redirect("/raw/" + filename)
     filename = secure_filename(filename)
     path = "content/" + filename
