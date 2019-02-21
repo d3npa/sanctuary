@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{{ title }}</title>
-        <link rel="stylesheet" href="/css/post.css"></link>
-        <link rel="stylesheet" id="theme" href="/css/theme-amber.css">
-        <link rel="stylesheet" id="theme" href="/css/theme-green.css">
-        <link rel="stylesheet" id="theme" href="/css/theme-white.css">
-        <link rel="stylesheet" id="theme" href="/css/theme-pink.css">
-        <script type="text/javascript" src="/js/fun.js"></script>
-    </head>
+    {% include "parts/head.jinja" %}
     <body>
-        <div id="topbar">
-        <b>
-		      [ <a href="/">トップページ</a>
-              | <a href="/raw/{{ title }}">RAW板を見る</a>
-	      | <a href="/blog">Ghostブログ</a>
-              | Keybase.io: <a target="_blank" href="//keybase.io/d3npa">@d3npa</a>
-              | <box green onclick="changeColor('green')">&nbsp;</box>
-                <box amber onclick="changeColor('amber')">&nbsp;</box>
-                <box white onclick="changeColor('white')">&nbsp;</box>
-               ]
-        </b>
-        </div>
+        {% include "parts/topbar.jinja" %}
         <div id="title"><br>; Viewing {{title}}<br><br></div>
         <div id="page">{{ content.decode("utf-8") }}</div>
     </body>

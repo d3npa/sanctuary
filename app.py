@@ -65,7 +65,7 @@ def view_file(filename):
     filename = secure_filename(filename)
     path = "content/" + filename
     if not os.path.exists(path):
-        return Response(status=404)
+        return Response(render_template("404.jinja", filename=filename), status=404)
     with open(path, "rb") as f:
         remote_addr = request.headers["X-Forwarded-For"] if "X-Forwarded-For" in request.headers else request.remote_addr
         res = Response(render_template("post.jinja", title=filename, content=f.read(), client_ip=remote_addr))
@@ -77,7 +77,7 @@ def view_file(filename):
 def view_raw_file(filename):
     path = "content/" + secure_filename(filename)
     if not os.path.exists(path):
-        return Response(status=404)
+        return Response(render_template("404.jinja", filename=filename), status=404)
     with open(path, "rb") as f:
         res = Response(f.read())
         res.headers["Content-Type"] = guess_mime(path) + "; charset=UTF-8"
@@ -87,7 +87,7 @@ def view_raw_file(filename):
 def get_css(filename):
     path = "resources/css/" + secure_filename(filename)
     if not os.path.exists(path):
-        return Response(status=404)
+        return Response(render_template("404.jinja", filename=filename), status=404)
     with open(path, "rb") as f:
         res = Response(f.read())
         res.headers["Content-Type"] = "text/css; charset=UTF-8"
@@ -97,7 +97,7 @@ def get_css(filename):
 def get_js(filename):
     path = "resources/js/" + secure_filename(filename)
     if not os.path.exists(path):
-        return Response(status=404)
+        return Response(render_template("404.jinja", filename=filename), status=404)
     with open(path, "rb") as f:
         res = Response(f.read())
         res.headers["Content-Type"] = "text/javascript; charset=UTF-8"
@@ -107,7 +107,7 @@ def get_js(filename):
 def get_ttf(filename):
     path = "resources/ttf/" + secure_filename(filename)
     if not os.path.exists(path):
-        return Response(status=404)
+        return Response(render_template("404.jinja", filename=filename), status=404)
     with open(path, "rb") as f:
         res = Response(f.read())
         res.headers["Content-Type"] = "application/octet-stream; charset=UTF-8"
