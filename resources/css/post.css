@@ -92,3 +92,7 @@ rolling[hidden] {
 #topbar box[white] {
     background: #eee;
 }
+
+#topbar box[pink] {
+    background: #ffd1f3;
+}

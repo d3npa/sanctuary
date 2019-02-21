@@ -25,20 +25,24 @@ function rollingData(div, data, delimiter="\n", delay=25, callback=null) {
     update(data);
 }
 
+themes = ["amber", "green", "white", "pink"];
 function changeColor(color) {
-    if (["white", "green", "amber"].includes(color)) {
+    if (themes.includes(color)) {
         document.cookie = "color=" + color;
         setColor(color);
     }
 }
 
 function setColor(color) {
-    if (["white", "green", "amber"].includes(color)) {
-        document.getElementById("theme").setAttribute("href", "/css/theme-" + color + ".css");
+    if (themes.includes(color)) {
+	for (var i = 1; i < document.styleSheets.length; i++)
+	    document.styleSheets[i].disabled = true;
+	document.styleSheets[themes.indexOf(color) + 1].disabled = false;
+        //document.getElementById("theme").setAttribute("href", "/css/theme-" + color + ".css");
     }
     else {
-        document.getElementById("theme").setAttribute("href", "/css/theme-amber.css");
+        document.getElementById("theme").setAttribute("href", "/css/theme-green.css");
     }
 }
 
-setColor((document.cookie != null) ? document.cookie.split("=")[1] : "amber");
+setColor((document.cookie != "") ? document.cookie.split("=")[1] : "green");
