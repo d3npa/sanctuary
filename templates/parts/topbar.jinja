@@ -1,13 +1,13 @@
 <div id="topbar">
     <b>
-        [ <a href="/">トップページ</a>
-        | <a href="/raw/{{ title }}">RAW板を見る</a>
-        | <a href="/blog">Ghostブログ</a>
-        | <a target="_blank" href="https://privacytools.io">PrivacyTools.io</a>オススメ
-        | あなたのIP: {{ client_ip }}
-        |   <box green onclick="changeColor('green')">&nbsp;</box>
-            <box amber onclick="changeColor('amber')">&nbsp;</box>
-            <box white onclick="changeColor('white')">&nbsp;</box>
-        ]
+            [ <a href="/">トップ<t wide>ページ</t></a>
+            | <a href="/raw/{{ title }}">RAW板<t wide>を表示</t></a>
+            | <a href="/blog">ブログ</a>
+            <t wide>| <a target="_blank" href="https://privacytools.io">PrivacyTools.io</a></t>
+            <t wide>| あなたのIP: {{ client_ip }}</t>
+            |   <box green onclick="changeColor('green')">&nbsp;</box>
+                <box amber onclick="changeColor('amber')">&nbsp;</box>
+                <box white onclick="changeColor('white')">&nbsp;</box>
+            ]
     </b>
 </div>
