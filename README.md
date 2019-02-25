@@ -1,17 +1,16 @@
 # sanctuary
 #### Intro
-I wanted a simple website which is themed after an old terminal, to serve static files. Content goes in a folder called /content which can then be accessed via the URL.
+I wanted a simple webapp to serve static files and is themed after an old terminal. Files in the `/content` folder may then be accessed via the URL.
 
-While this website may feel bland to some, it is exactly what I had in mind before making it so I actually feel quite accomplished with it.
+While this website may feel bland to some, it is exactly what I had in mind before making it and I am personally quite happy with the outcome.
 
 #### Security
-Security was approached in the following way: 
-- The webapp itself has no write access to anything on the site. 
-- The only data a client can provide is the URL, HTTP headers, and I guess their IP. All this is strictly formatted and printed to screen. This output is redirected to a log file using bash redirection. 
+Web security for this app was approached in the following way: 
+- The webapp should not be able to write/store information on the server. (This nullifies any potential injections)
+- As such, all changes to the files must be done through the terminal. (I edit things with VIM through SSH, which works great for me)
+- URL sanitation is done with the Werkzeug module's `secure_filename()` function. 
+The only file the app may write to is the log file. Care should be taken if parsing this file with a program.
 
-This way, I can have my site call Bash or Python scripts without fear that someone will take control of them.
-My URL sanitation is done with the Werkzeug module's `secure_filename()` function. 
-
-I'm interested in security, so please contact me if you find any problems with this app before I do.
+I think I did an okay job at locking this down, but please contact me if you find any security problems with this app before I do.
 
 Thank-you :)
