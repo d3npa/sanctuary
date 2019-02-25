@@ -35,13 +35,13 @@ function changeColor(color) {
 
 function setColor(color) {
     if (themes.includes(color)) {
-	for (var i = 1; i < document.styleSheets.length; i++)
-	    document.styleSheets[i].disabled = true;
-	document.styleSheets[themes.indexOf(color) + 3].disabled = false;
+    	for (var i = 3; i < document.styleSheets.length; i++)
+            document.styleSheets[i].disabled = true;
+        document.styleSheets[themes.indexOf(color) + 3].disabled = false;
         //document.getElementById("theme").setAttribute("href", "/css/theme-" + color + ".css");
     }
     else {
-        document.getElementById("theme").setAttribute("href", "/css/theme-green.css");
+        setColor("green");
     }
 }
 

@@ -1,6 +1,6 @@
 function adaptStylesheets() {
     var width = document.getElementsByTagName("html")[0].clientWidth;
-    if (width <= 800) {
+    if (width <= 900) {
         // console.log("Thin detected");
         document.styleSheets[1].disabled = true;
         document.styleSheets[2].disabled = false;
