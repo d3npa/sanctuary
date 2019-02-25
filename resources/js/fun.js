@@ -37,7 +37,7 @@ function setColor(color) {
     if (themes.includes(color)) {
 	for (var i = 1; i < document.styleSheets.length; i++)
 	    document.styleSheets[i].disabled = true;
-	document.styleSheets[themes.indexOf(color) + 1].disabled = false;
+	document.styleSheets[themes.indexOf(color) + 3].disabled = false;
         //document.getElementById("theme").setAttribute("href", "/css/theme-" + color + ".css");
     }
     else {
