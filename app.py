@@ -5,11 +5,6 @@ from werkzeug import secure_filename
 import os, time, re
 app = Flask(__name__)
 
-@app.before_request
-def check_domain():
-    if not request.host in ["codality.hackers.moe", "xn--d3np-ooa.hackers.moe"]:
-        return redirect("https://duckduckgo.com")
-
 @app.after_request
 def log_request(res):
     remote_addr = request.headers["X-Forwarded-For"] if "X-Forwarded-For" in request.headers else request.remote_addr
