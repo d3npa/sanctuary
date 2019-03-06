@@ -5,6 +5,10 @@ from werkzeug import secure_filename
 import os, time, re
 app = Flask(__name__)
 
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
 @app.after_request
 def log_request(res):
     remote_addr = request.headers["X-Forwarded-For"] if "X-Forwarded-For" in request.headers else request.remote_addr
