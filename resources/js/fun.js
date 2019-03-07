@@ -1,10 +1,11 @@
 function htmlDecode(input){
-    // https://css-tricks.com/snippets/javascript/unescape-html-in-js/
-    var e = document.createElement('div');
-    e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    // https://stackoverflow.com/a/7394787
+    var txt = document.createElement("textarea");
+    txt.innerHTML = input;
+    return txt.value;
 }
 
+closeTag = 0;
 function rollingData(div, data, delimiter="\n", delay=25, callback=null) {
     // 与えた配列の内容を一字ごとに出力する
     div.removeAttribute("hidden");
@@ -13,12 +14,28 @@ function rollingData(div, data, delimiter="\n", delay=25, callback=null) {
     function update(data) {
         string = data.shift();
         if (string == null) {
-            // div.innerHTML = htmlDecode(div.innerHTML);
             if (callback != null) callback();
             return;
         }
         setTimeout(function () {
             div.innerHTML += string + delimiter;
+            if (delimiter == "") {
+                // 打つ途中にリンクをパースする
+                if (string.includes("<")) {
+                    closeTag = 1;
+                }
+                else if (string.includes("/") && closeTag == 1) {
+                    closeTag = 2;
+                }
+                else if (string.includes(">") && closeTag == 2) {
+                    div.innerHTML = htmlDecode(div.innerHTML);
+                    closeTag = 0;
+                }
+                else if (closeTag != 2)
+                    closeTag = 0;
+            }
+            else
+                div.innerHTML = htmlDecode(div.innerHTML);
             update(data);
         }, delay);
     }
