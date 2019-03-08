@@ -1,21 +1,8 @@
-@font-face {
-    font-family: "vt220";
-    src: url("/ttf/Glass_TTY_VT220.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "jackey";
-    src: url("/ttf/jackeyfont.ttf") format("truetype");
-}
-
 html, body {
     background-size: cover;
     background-repeat: repeat-y;
     background-color: #000;
     font-family: monospace;
-/*
-    font-family: "vt220", "jackey", monospace;
-*/
     color: white;
     margin: 0;
     padding: 0;
@@ -99,7 +86,7 @@ rolling[hidden] {
 }
 
 #signature {
-    position: absolute;
+    position: fixed;
     text-align: right;
     bottom: 16px;
     right: 16px;
