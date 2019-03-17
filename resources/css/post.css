@@ -2,7 +2,7 @@ html, body {
     background-size: cover;
     background-repeat: repeat-y;
     background-color: #000;
-    font-family: "IBM Plex Mono", Monospace;
+    font-family: Monospace;
     color: white;
     margin: 0;
     padding: 0;
@@ -31,7 +31,7 @@ body > #topbar {
 
 body > #topbar * {
     text-align: center;
-    font-family: "IBM Plex Mono", Monospace;
+    font-family: Monospace;
 }
 
 body > #topbar a {
